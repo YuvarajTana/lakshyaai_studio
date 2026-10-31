@@ -8,7 +8,8 @@ packages/tokens     Colours, type, spacing, easing; 5 themes switched by data-th
 packages/motion     Lenis + GSAP: smooth scroll, reveals, pinned scenes, image sequence, cursor
 packages/three      React Three Fiber: one canvas, scroll camera, hotspots, procedural models
 packages/ui         Section blocks: headers, heroes, listings, specs, units, booking, cart, footer
-docs/               Reference board (Mobbin) and the art-slot list
+docs/               KNOWLEDGE_BASE.md, reference board (Mobbin + Scrolltide), art-slot list
+CLAUDE.md           Context and rules for AI coding agents (AGENTS.md points to it)
 demos/office        The earlier Lakshya Tech Park 3D office demo, unchanged
 ```
 
