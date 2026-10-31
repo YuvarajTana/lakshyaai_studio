@@ -3,7 +3,7 @@
  * this file mirrors them for JS consumers (three.js materials, canvas drawing, GSAP).
  */
 
-export type ThemeName = "studio" | "estate" | "hotel" | "commerce";
+export type ThemeName = "studio" | "story" | "estate" | "hotel" | "commerce";
 
 export interface ThemeTokens {
   label: string;
@@ -25,7 +25,22 @@ export interface ThemeTokens {
 export const themes: Record<ThemeName, ThemeTokens> = {
   studio: {
     label: "Studio",
-    use: "LakshyaAI's own look: dark navy, amber/teal/coral semantic accents",
+    use: "The Lakshya AI brand from studio.lakshyaai.com: mint, emerald, Bricolage + Geist. Light and dark.",
+    color: {
+      bg: "#f4fbf7",
+      surface: "#ffffff",
+      ink: "#0f172a",
+      muted: "#64748b",
+      line: "#e2e8f0",
+      accent: "#0e9f6e",
+      accent2: "#0d9488",
+      accent3: "#f59e0b",
+    },
+    font: { display: "Bricolage Grotesque Variable", body: "Geist Variable", mono: "Geist Mono Variable" },
+  },
+  story: {
+    label: "Story",
+    use: "Brand-story sites: dark navy editorial serif, amber/teal/coral accents",
     color: {
       bg: "#0b1020",
       surface: "#121a30",

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "Free, open website foundations for scroll storytelling, real estate, hotels and e-commerce: 3D, GSAP motion and micro-interactions. Made in Tirupati & Bengaluru.",
 };
 
-export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#0b1020" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#f4fbf7" };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

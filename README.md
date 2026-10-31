@@ -4,7 +4,7 @@ The groundwork behind every LakshyaAI Studio site: design tokens, scroll motion,
 
 ```
 apps/web            Next.js app: the hub (/) and four starters (/story /estate /hotel /shop)
-packages/tokens     Colours, type, spacing, easing; 4 themes switched by data-theme
+packages/tokens     Colours, type, spacing, easing; 5 themes switched by data-theme
 packages/motion     Lenis + GSAP: smooth scroll, reveals, pinned scenes, image sequence, cursor
 packages/three      React Three Fiber: one canvas, scroll camera, hotspots, procedural models
 packages/ui         Section blocks: headers, heroes, listings, specs, units, booking, cart, footer
@@ -25,7 +25,7 @@ Node 20+ and pnpm 10.
 
 ## How the pieces fit
 
-**Tokens.** Every block reads CSS variables (`--lk-bg`, `--lk-ink`, `--lk-accent`, `--lk-font-display` …). Put `data-theme="studio" | "estate" | "hotel" | "commerce"` on a wrapper and the whole subtree re-skins. Add a client brand by adding one more `[data-theme="client"]` block in `packages/tokens/src/styles.css`.
+**Tokens.** Every block reads CSS variables (`--lk-bg`, `--lk-ink`, `--lk-accent`, `--lk-font-display` …). Put `data-theme="studio" | "story" | "estate" | "hotel" | "commerce"` on a wrapper and the whole subtree re-skins. **Studio** is the Lakshya AI brand taken from studio.lakshyaai.com (mint `#f4fbf7`, emerald `#0e9f6e`, Bricolage Grotesque + Geist + Geist Mono); it follows the OS into dark mode, or force it with `data-mode="light" | "dark"`. **Story** is the dark navy editorial look used by the storytelling starter. Add a client brand by adding one more `[data-theme="client"]` block in `packages/tokens/src/styles.css`.
 
 **Motion.** Wrap the app in `<SmoothScroll>` once. Lenis runs from GSAP's ticker so ScrollTrigger never drifts, and everything falls back to native scroll and no animation when the visitor prefers reduced motion. Everything pinned is built on one primitive, `<Pinned>` (CSS sticky + scroll progress), which is sturdier on phones than pin-spacing:
 

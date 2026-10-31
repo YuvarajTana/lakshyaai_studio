@@ -44,7 +44,8 @@
 .lk-display--2xl { font-size: var(--lk-text-2xl); }
 .lk-display--xl { font-size: var(--lk-text-xl); line-height: 1.05; }
 .lk-display--lg { font-size: var(--lk-text-lg); line-height: 1.15; }
-.lk-display em { font-style: italic; color: var(--lk-accent); }
+.lk-display em { font-style: inherit; color: var(--lk-accent-text); }
+[data-theme="story"] .lk-display em, [data-theme="hotel"] .lk-display em { font-style: italic; }
 
 /* Buttons ----------------------------------------------------------------- */
 .lk-btn {
@@ -59,8 +60,8 @@
   cursor: pointer;
   transition: background var(--lk-dur-fast), color var(--lk-dur-fast), border-color var(--lk-dur-fast), transform var(--lk-dur-fast) var(--lk-ease-out);
 }
-.lk-btn--solid { background: var(--lk-ink); color: var(--lk-bg); }
-.lk-btn--solid:hover { background: var(--lk-accent); color: var(--lk-on-accent); }
+.lk-btn--solid { background: var(--lk-btn); color: var(--lk-btn-ink); }
+.lk-btn--solid:hover { background: color-mix(in srgb, var(--lk-btn) 82%, var(--lk-ink)); }
 .lk-btn--ghost { border-color: var(--lk-line); color: var(--lk-ink); background: transparent; }
 .lk-btn--ghost:hover { border-color: var(--lk-ink); }
 .lk-btn--link { padding: 0.4em 0; border-radius: 0; background: none; color: var(--lk-ink); font-size: var(--lk-text-lg); border-bottom: 1px solid currentColor; }
@@ -121,6 +122,7 @@
 .lk-header__brand { text-decoration: none; font-weight: 600; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px; }
 .lk-header__nav { display: flex; gap: var(--lk-space-6); font: var(--lk-text-xs) / 1 var(--lk-font-mono); letter-spacing: 0.1em; text-transform: uppercase; }
 .lk-header__nav a { text-decoration: none; opacity: 0.75; transition: opacity 0.2s; }
+[data-theme="studio"] .lk-header__nav { font: 500 0.92rem/1 var(--lk-font-body); letter-spacing: 0; text-transform: none; }
 .lk-header__nav a:hover { opacity: 1; }
 .lk-header__actions { display: flex; align-items: center; gap: var(--lk-space-3); }
 .lk-header__cta { padding: 0.7em 1.1em; }

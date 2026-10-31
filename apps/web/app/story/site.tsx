@@ -66,7 +66,7 @@ function drawRoast(ctx: CanvasRenderingContext2D, t: number, w: number, h: numbe
 
 export function StorySite() {
   return (
-    <ThemePage theme="studio">
+    <ThemePage theme="story">
       <SiteHeader brand={story.brand} links={story.nav} cta={{ label: "Order beans", href: "#estate" }} />
       <HeroMega
         kicker={story.hero.kicker}

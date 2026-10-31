@@ -1,4 +1,9 @@
 /* Self-hosted fonts (no Google Fonts request at runtime). Import once in the app root. */
+/* Lakshya AI brand (studio theme) */
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+/* Vertical themes */
 @import "@fontsource-variable/fraunces";
 @import "@fontsource-variable/fraunces/wght-italic.css";
 @import "@fontsource-variable/hanken-grotesk";

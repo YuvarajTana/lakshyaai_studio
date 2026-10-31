@@ -4,8 +4,78 @@
    Everything in @lakshya/ui reads these variables, so one attribute re-skins a site.
    ========================================================================== */
 
+/* Shared defaults every theme inherits unless it overrides them. */
+:root,
+[data-theme] {
+  --lk-font-body: "Hanken Grotesk Variable", system-ui, sans-serif;
+  --lk-font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  /* Primary button: ink on bg unless a theme has a dedicated button colour. */
+  --lk-btn: var(--lk-ink);
+  --lk-btn-ink: var(--lk-bg);
+  /* Colour for emphasised words in headings (<em>). */
+  --lk-accent-text: var(--lk-accent);
+}
+
+/* Studio: the Lakshya AI brand, matched to studio.lakshyaai.com.
+   Light mint by default; dark follows the OS, or force it with data-mode. */
 :root,
 [data-theme="studio"] {
+  --lk-bg: #f4fbf7;
+  --lk-surface: #ffffff;
+  --lk-ink: #0f172a;
+  --lk-muted: #64748b;
+  --lk-line: rgba(15, 23, 42, 0.1);
+  --lk-accent: #0e9f6e;
+  --lk-accent-2: #0d9488;
+  --lk-accent-3: #f59e0b;
+  --lk-on-accent: #ffffff;
+  --lk-accent-text: #0d9488;
+  --lk-btn: #08875d;
+  --lk-btn-ink: #ffffff;
+
+  --lk-font-display: "Bricolage Grotesque Variable", "Helvetica Neue", Arial, sans-serif;
+  --lk-font-body: "Geist Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --lk-font-mono: "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --lk-display-weight: 700;
+  --lk-display-tracking: -0.035em;
+
+  color-scheme: light;
+}
+
+/* Studio dark: same values as the dark mode on studio.lakshyaai.com. */
+[data-theme="studio"][data-mode="dark"] {
+  --lk-bg: #0b1220;
+  --lk-surface: #111a2b;
+  --lk-ink: #e6edf5;
+  --lk-muted: #8b9bb0;
+  --lk-line: rgba(255, 255, 255, 0.1);
+  --lk-accent: #10b981;
+  --lk-accent-2: #2dd4bf;
+  --lk-on-accent: #04130d;
+  --lk-accent-text: #34d399;
+  --lk-btn: #10b981;
+  --lk-btn-ink: #04130d;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  [data-theme="studio"]:not([data-mode="light"]) {
+    --lk-bg: #0b1220;
+    --lk-surface: #111a2b;
+    --lk-ink: #e6edf5;
+    --lk-muted: #8b9bb0;
+    --lk-line: rgba(255, 255, 255, 0.1);
+    --lk-accent: #10b981;
+    --lk-accent-2: #2dd4bf;
+    --lk-on-accent: #04130d;
+    --lk-accent-text: #34d399;
+    --lk-btn: #10b981;
+    --lk-btn-ink: #04130d;
+    color-scheme: dark;
+  }
+}
+
+/* Story: dark editorial look for brand-story sites (serif, navy, amber/teal/coral). */
+[data-theme="story"] {
   --lk-bg: #0b1020;
   --lk-surface: #121a30;
   --lk-ink: #eef1f7;
@@ -15,13 +85,9 @@
   --lk-accent-2: #2ec4b6;
   --lk-accent-3: #ff6b5b;
   --lk-on-accent: #0b1020;
-
   --lk-font-display: "Fraunces Variable", Georgia, serif;
-  --lk-font-body: "Hanken Grotesk Variable", system-ui, sans-serif;
-  --lk-font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
   --lk-display-weight: 340;
   --lk-display-tracking: -0.02em;
-
   color-scheme: dark;
 }
 
