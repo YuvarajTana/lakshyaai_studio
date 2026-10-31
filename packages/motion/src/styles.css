@@ -1,0 +1,139 @@
+/* Structural styles for @lakshya/motion. Visual styling lives in @lakshya/ui. */
+
+.lk-pinned { position: relative; }
+.lk-pinned__sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* PinnedChapters ---------------------------------------------------------- */
+.lk-chapters {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: var(--lk-space-7);
+  padding: 0 var(--lk-gutter);
+}
+.lk-chapters__media {
+  position: relative;
+  height: 72svh;
+  border-radius: var(--lk-radius-lg);
+  overflow: hidden;
+  background: var(--lk-surface);
+}
+.lk-chapters__frame {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 0.9s var(--lk-ease-out), transform 1.4s var(--lk-ease-out);
+}
+.lk-chapters__frame[data-active="true"] { opacity: 1; transform: none; }
+.lk-chapters__frame > * { width: 100%; height: 100%; }
+.lk-chapters__copy { position: relative; min-height: 50svh; }
+.lk-chapters__index {
+  display: flex;
+  gap: var(--lk-space-4);
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--lk-space-7);
+  font-family: var(--lk-font-mono);
+  font-size: var(--lk-text-xs);
+  color: var(--lk-muted);
+}
+.lk-chapters__index li { transition: color 0.4s; }
+.lk-chapters__index li[data-active="true"] { color: var(--lk-accent); }
+.lk-chapters__text {
+  position: absolute;
+  inset: var(--lk-space-9) 0 auto 0;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s var(--lk-ease-out), transform 0.9s var(--lk-ease-out);
+  pointer-events: none;
+}
+.lk-chapters__text[data-active="true"] { opacity: 1; transform: none; pointer-events: auto; }
+.lk-chapters__text h3 {
+  font-family: var(--lk-font-display);
+  font-weight: var(--lk-display-weight);
+  letter-spacing: var(--lk-display-tracking);
+  font-size: var(--lk-text-2xl);
+  line-height: 1;
+  margin: 0 0 var(--lk-space-5);
+}
+.lk-chapters__body { color: var(--lk-muted); max-width: 42ch; }
+
+@media (max-width: 900px) {
+  .lk-chapters { grid-template-columns: 1fr; align-content: center; gap: var(--lk-space-5); }
+  .lk-chapters__media { height: 42svh; }
+  .lk-chapters__copy { min-height: 36svh; }
+  .lk-chapters__index { margin-bottom: var(--lk-space-4); }
+  .lk-chapters__text { inset: var(--lk-space-6) 0 auto 0; }
+  .lk-chapters__text h3 { font-size: var(--lk-text-xl); }
+}
+
+/* HorizontalScroll -------------------------------------------------------- */
+.lk-hscroll { display: flex; align-items: center; }
+.lk-hscroll__track {
+  display: flex;
+  gap: var(--lk-space-5);
+  padding: 0 var(--lk-gutter);
+  will-change: transform;
+}
+
+/* StackCards -------------------------------------------------------------- */
+.lk-stack { display: grid; gap: 12vh; padding-bottom: 10vh; }
+.lk-stack__card {
+  position: sticky;
+  top: calc(10vh + var(--i) * 28px);
+}
+
+/* ImageSequence ----------------------------------------------------------- */
+.lk-sequence__canvas { width: 100%; height: 100%; }
+.lk-sequence__overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: end start;
+  padding: var(--lk-gutter);
+  pointer-events: none;
+}
+
+/* Marquee ----------------------------------------------------------------- */
+.lk-marquee { overflow: hidden; white-space: nowrap; }
+.lk-marquee__track { display: inline-flex; will-change: transform; }
+.lk-marquee__group { display: inline-flex; align-items: center; gap: 1em; padding-right: 1em; }
+
+/* Cursor ------------------------------------------------------------------ */
+.lk-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 50%;
+  background: var(--lk-accent);
+  pointer-events: none;
+  align-items: center;
+  justify-content: center;
+  mix-blend-mode: difference;
+  transition: width 0.35s var(--lk-ease-out), height 0.35s var(--lk-ease-out), margin 0.35s var(--lk-ease-out);
+}
+.lk-cursor span {
+  font-family: var(--lk-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lk-on-accent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.lk-cursor[data-active="true"] { width: 84px; height: 84px; margin: -42px 0 0 -42px; mix-blend-mode: normal; }
+.lk-cursor[data-active="true"] span { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lk-chapters__frame, .lk-chapters__text { transition: none; }
+}
