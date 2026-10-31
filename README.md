@@ -3,7 +3,7 @@
 The groundwork behind every LakshyaAI Studio site: design tokens, scroll motion, 3D, section blocks and four starter sites (storytelling, real estate, hotels, e-commerce). The code is free; LakshyaAI Studio charges to host it and connect it (bookings, payments, CMS, forms). Sold and marketed through [studio.lakshyaai.com](https://studio.lakshyaai.com) and [@studio.lakshyaai](https://instagram.com/studio.lakshyaai).
 
 ```
-apps/web            Next.js app: the hub (/) and four starters (/story /estate /hotel /shop)
+apps/web            Next.js app: hub (/), component gallery (/kit), four starters (/story /estate /hotel /shop)
 packages/tokens     Colours, type, spacing, easing; 5 themes switched by data-theme
 packages/motion     Lenis + GSAP: smooth scroll, reveals, pinned scenes, image sequence, cursor
 packages/three      React Three Fiber: one canvas, scroll camera, hotspots, procedural models
@@ -37,10 +37,15 @@ Node 20+ and pnpm 10.
 | `HorizontalScroll`, `StackCards` | Galleries and stacked cards |
 | `ImageSequence` | Scroll-scrubbed frames on a canvas: pass image URLs or a `draw` function |
 | `useScrollProgress`, `useActiveStep` | Build your own scroll-driven thing without re-rendering React |
+| `ScrollVideo` | Scroll drives a video's playhead, captions fade through it |
+| `Turntable` | Drag to spin a frame sequence (360 product/building), or pointer-follow |
+| `ZoomReveal`, `DepthLayers` | Pill-to-full-bleed reveal; layered plates pushed through in depth |
+| `RevealLens`, `BeforeAfter` | Pointer lens showing a second image; drag-to-compare slider |
+| `ShaderGradient`, `Preloader` | Theme-coloured living gradient (one WebGL shader); session-once intro |
 
 **3D.** `<SceneCanvas>` is the only canvas you need: capped DPR, adaptive resolution, offline studio lighting (no HDR download), stops rendering when off-screen, and a fallback when WebGL is missing. `<ScrollRig>` flies the camera through keyframes as you scroll, arcing around the subject. `<Hotspots>` pins labels to points on a model. `Tower`, `Villa`, `ProductSpeaker` and `Pebble` are procedural placeholders sized to real proportions; `<ModelSlot src="/model.glb">` swaps in a client's GLB without re-framing.
 
-**Blocks.** `@lakshya/ui` holds the sections, all driven by props. A starter is a page of blocks plus a content file (`apps/web/content/*.ts`). To make a client site, copy a starter, edit its content file, set its theme, and replace art slots with photos.
+**Blocks.** `@lakshya/ui` holds the sections, all driven by props, including `ScrollIndex`, `ExpandCards`, `HoverList` and `StepPath`. Every block is demoed live at `/kit`. A starter is a page of blocks plus a content file (`apps/web/content/*.ts`). To make a client site, copy a starter, edit its content file, set its theme, and replace art slots with photos.
 
 **Art slots.** `<Art scene="arch" slot="room-courtyard" />` draws a themed illustration so a site looks finished before photography exists. Pass `src` and the photo or AI render takes over. See [docs/assets.md](docs/assets.md) for every slot.
 
@@ -56,6 +61,6 @@ The hooks for the paid tier are already there: `BookingBar onSearch`, `CartDrawe
 
 ## References
 
-Patterns were studied from the Mobbin collections listed in [docs/references.md](docs/references.md). They are references, not sources: every component here is original code.
+Patterns were studied from the Mobbin collections and the Scrolltide library listed in [docs/references.md](docs/references.md). They are references, not sources: every component here is original code.
 
 All names, properties, prices and people in the demos are fictional.

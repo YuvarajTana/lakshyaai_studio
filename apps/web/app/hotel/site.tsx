@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { PinnedChapters, Reveal } from "@lakshya/motion";
+import { PinnedChapters, Reveal, RevealLens, ZoomReveal } from "@lakshya/motion";
 import { Art, BookingBar, Container, CtaBand, Gallery, HeroSplit, ListingGrid, Quote, SiteFooter, SiteHeader, Statement } from "@lakshya/ui";
 import { ThemePage } from "@/components/ThemePage";
 import { ScrollScene } from "@/components/ScrollScene";
@@ -32,6 +32,7 @@ export function HotelSite() {
         </Reveal>
       </Container>
       <Statement kicker="The house">{hotel.statement}</Statement>
+      <ZoomReveal before="Stay" after="awhile" media={<Art scene="horizon" seed={21} slot="zoom-pool-dusk" />} />
       <ListingGrid id="stays" kicker="Stay" title="Rooms, suites & villas" intro="Every room opens onto the courtyard or the hills. Rates include breakfast and temple transfers." items={hotel.stays} layout="staggered" filter />
       <div id="experiences">
         <PinnedChapters
@@ -46,6 +47,25 @@ export function HotelSite() {
       <ScrollScene id="grounds" steps={hotel.grounds}>
         {(progress) => <VillaTour progress={progress} />}
       </ScrollScene>
+      <section className="lk-section">
+        <Container className="hotel-lens">
+          <div>
+            <p className="lk-kicker">Day &amp; night</p>
+            <h2 className="lk-display lk-display--2xl">The pool villa after the sun goes down</h2>
+            <p className="lk-head__intro">Move across the picture to switch on the evening lights.</p>
+          </div>
+          <RevealLens
+            className="hotel-lens__media"
+            base={<Art scene="horizon" seed={8} slot="villa-day" />}
+            reveal={
+              <div data-theme="story" style={{ height: "100%" }}>
+                <Art scene="horizon" seed={8} slot="villa-night" />
+              </div>
+            }
+            label="Night"
+          />
+        </Container>
+      </section>
       <Gallery id="journal" kicker="Journal" title="A day at the house" items={hotel.gallery} />
       <Quote {...hotel.quote} />
       <CtaBand kicker="Direct bookings get the best rate" title="Stay with us" body="Free cancellation up to 72 hours before arrival." cta={{ label: "Check availability", href: "#reserve" }} />

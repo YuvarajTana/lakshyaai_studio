@@ -32,7 +32,35 @@ These are for studying patterns. Don't copy layouts, copy or imagery from them i
 | Restaurant "making of" with quote | [Squarespace / Mosuke](https://mobbin.com/sites/sections/96a5a485-2b70-48b4-b3d4-f6e94e1cbc25) | `Quote`, `PinnedChapters` |
 | Half photo, half colour block with big type | [Eat Hungry Tiger](https://mobbin.com/sites/sections/2331ed49-dec3-4209-aef8-dae217fa3578) | `PinnedChapters` |
 
+## Scrolltide (paid library, studied 31 Oct 2026)
+
+Catalogued from [scrolltide.co](https://www.scrolltide.co) while signed in: 132 hero/landing templates, ~70 components, 20 sections, 40 shaders. Most templates are a cinematic AI-rendered film or frame sequence driven by the scrollbar, with copy fading through chapters. Their prompts and code are licensed to us for our own builds, not for redistribution, so nothing was copied: each pattern below was rebuilt from scratch in the kit.
+
+| Pattern seen | Scrolltide examples | Kit component |
+| --- | --- | --- |
+| Video playhead driven by scroll, chapters of copy over it | Threshold, Katana, Midnight Sun, Marlin | `ScrollVideo` |
+| Frame sequence on canvas, scrubbed by scroll | Ora (240 frames), Rann Mahal (palace at dusk, 5 chapters), AeroForce | `ImageSequence` (already in kit) |
+| Frame sequence driven by the pointer (character follows cursor), drag-to-spin | Scowlby, Amble, Marmalade, Pouterby | `Turntable` (`mode="drag"` or `"pointer"`) |
+| Pill of footage between two words opening to full-bleed | Zoom Reveal component | `ZoomReveal` |
+| Layered plates pushed through in depth | Selene, Nordlys (6 parallax layers), Mariana (11 plates), Sanctum | `DepthLayers` |
+| Pointer reveals a second image through the first | Emberkiri, Frostpaw, Dither Lens | `RevealLens` |
+| Animated mesh / flow gradient backgrounds | Shaders: Mint Haze, Sage Mesh, Ocean Mesh, Sunset Mesh… | `ShaderGradient` (theme-coloured) |
+| Intro loader: tagline word by word, logo, screen splits | Intro Loader component | `Preloader` |
+| Project takes the screen with its name huge, one by one | Scroll Index component | `ScrollIndex` |
+| Slivers widening into a card on hover | Expanded Cards component | `ExpandCards` |
+| Big numbered list, row opens with copy and a swung-in picture | Hover List, Hover Tabs | `HoverList` |
+| Process steps joined by a dashed line drawn on scroll | Step Path | `StepPath` |
+| Product pinned centre while the page travels past | Vesper, Bottle | `HeroScene` + `ScrollRig` (shop starter) |
+| Exploded / turned product with spec callouts | Camera, Valmora, Fabrica | `Hotspots` + `ScrollScene` (shop starter) |
+
+Also added from the real-estate brief rather than Scrolltide: `BeforeAfter` (plan vs finished).
+
+### Worth building next (from the same catalogue)
+- Coverflow / arc carousels for rooms and testimonials (Arc Carousel, Depth Carousel, Quote Deck).
+- Image trail and mosaic-on-pointer backgrounds for fashion and food brands.
+- Particle text / particle globe for tech and export brands.
+- A booking-form section (their "Route Booking" contact band) wired to WhatsApp.
+
 ## Still to add
 
-- **Scrolltide** (paid, prompts + templates): not catalogued yet because the browser wasn't reachable. Next pass: open it in Chrome, add a "Scrolltide patterns" table here, and turn any missing effects into new `@lakshya/motion` components. Same rule: study, then write our own.
 - Mobbin flows for booking and checkout (multi-step), once the hosted tier is wired.

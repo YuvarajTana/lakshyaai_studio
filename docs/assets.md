@@ -58,3 +58,11 @@ Suggested size: 2000 px on the long edge, WebP, under 300 KB. Hero slots: 2400 p
 | `ProductSpeaker` | Product GLB | Base at y=0, ~1.6 units tall to keep camera keys |
 
 Use `<ModelSlot src="/models/x.glb" placeholder={<Tower />} />`. Compress with `gltf-transform optimize in.glb out.glb --texture-compress webp`.
+
+## Video and frame sequences
+
+- **ScrollVideo:** export MP4 with a keyframe on every frame, or seeking stutters:
+  `ffmpeg -i in.mp4 -an -vf scale=1920:-2 -c:v libx264 -g 1 -crf 23 -movflags +faststart out.mp4`
+  Keep clips 4–10 s. The demo `apps/web/public/media/estate-dawn.mp4` is procedurally rendered (no stock footage).
+- **ImageSequence / Turntable:** cut a clip to stills: `ffmpeg -i in.mp4 -vf fps=24,scale=1600:-2 frames/f%03d.webp`. 72 frames is a smooth 360; 120–240 for a scroll film.
+- **DepthLayers:** from one render, cut sky, mid and foreground into transparent PNGs of the same size.

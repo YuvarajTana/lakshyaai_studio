@@ -16,7 +16,9 @@ import { ThemePage } from "@/components/ThemePage";
 import { ScrollScene } from "@/components/ScrollScene";
 import { TowerHero, TowerTour } from "@/components/lazy";
 import { StudioCredit } from "@/components/StudioCredit";
-import { HeroScene } from "@lakshya/ui";
+import { HeroScene, ScrollIndex, StepPath } from "@lakshya/ui";
+import { BeforeAfter } from "@lakshya/motion";
+import { Art, Container } from "@lakshya/ui";
 import { estate } from "@/content/estate";
 
 export function EstateSite() {
@@ -49,7 +51,18 @@ export function EstateSite() {
         {(progress, active) => <TowerTour progress={progress} activeFloor={active === 3 ? 13 : active === 1 ? 4 : null} />}
       </ScrollScene>
       <SpecList id="specs" kicker="Specifications" title="Built to outlast the loan" items={estate.specs} />
-      <ListingGrid id="projects" kicker="Our work" title="Other projects" intro="Homes and workplaces across the Tirupati region, built by the same team." items={estate.projects} filter />
+      <section className="lk-section lk-section--surface">
+        <Container className="estate-compare">
+          <div>
+            <p className="lk-kicker">From drawing to home</p>
+            <h2 className="lk-display lk-display--2xl">Drag to see the Sky Residence finished</h2>
+          </div>
+          <BeforeAfter before={<Art scene="grid" seed={12} slot="plan-sky-residence" />} after={<Art scene="arch" seed={12} slot="render-sky-residence" />} labels={["Floor plan", "Finished"]} />
+        </Container>
+      </section>
+      <StepPath kicker="Buying with us" title="Five steps to your keys" steps={estate.buying} />
+      <ScrollIndex id="projects" items={estate.projects.map((p) => ({ title: p.title, meta: [p.meta, p.tag].filter(Boolean).join(" · "), art: p.art }))} />
+      <ListingGrid kicker="Our work" title="Browse by type" intro="Homes and workplaces across the Tirupati region, built by the same team." items={estate.projects} filter />
       <Timeline kicker="Construction" title="Where we are" items={estate.milestones} />
       <CtaBand id="visit" kicker="Site visits daily, 10–6" title="Come see the light for yourself" body="We'll pick you up from Tirupati station or the airport." cta={{ label: "Book a site visit", href: "#visit" }} />
       <SiteFooter

@@ -26,3 +26,16 @@ export {
   type Chapter,
   type ImageSequenceProps,
 } from "./scroll";
+export {
+  ScrollVideo,
+  Turntable,
+  ZoomReveal,
+  DepthLayers,
+  RevealLens,
+  BeforeAfter,
+  Preloader,
+  type ScrollVideoProps,
+  type TurntableProps,
+  type DepthLayer,
+} from "./media";
+export { ShaderGradient, type ShaderGradientProps } from "./ShaderGradient";

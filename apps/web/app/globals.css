@@ -77,3 +77,27 @@ html { background: var(--lk-bg); }
 .panel-title { margin: 0 0 var(--lk-space-3); font-size: var(--lk-text-md); font-weight: 500; display: flex; justify-content: space-between; }
 .panel-title span { font: var(--lk-text-xs) var(--lk-font-mono); color: var(--lk-muted); }
 .legend { display: flex; gap: var(--lk-space-4); margin-top: var(--lk-space-3); font: var(--lk-text-xs) var(--lk-font-mono); color: var(--lk-muted); }
+
+/* Kit gallery ------------------------------------------------------------ */
+.kit-intro { padding: 150px 0 var(--lk-space-7); }
+.kit-intro .lk-display { max-width: 16ch; margin-bottom: var(--lk-space-5); }
+.kit-head { display: grid; gap: var(--lk-space-3); max-width: 60ch; padding-top: var(--lk-space-8); margin-bottom: var(--lk-space-6); }
+.kit-head .lk-kicker { margin: 0; text-transform: none; letter-spacing: 0; color: var(--lk-accent-text); }
+.kit-head__body { margin: 0; color: var(--lk-muted); }
+.lk-section .kit-head { padding-top: 0; }
+.kit-gradients { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: var(--lk-space-4); }
+.kit-gradient { position: relative; aspect-ratio: 4 / 5; border-radius: 24px; overflow: hidden; border: 1px solid var(--lk-line); }
+.kit-gradient span { position: absolute; left: 14px; bottom: 14px; padding: 5px 10px; border-radius: 999px; background: color-mix(in srgb, var(--lk-bg) 80%, transparent); font: 11px/1 var(--lk-font-mono); }
+.kit-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--lk-space-6); align-items: start; }
+.kit-pair--wide { grid-template-columns: 0.8fr 1.2fr; align-items: center; }
+.kit-card { padding: var(--lk-space-6); border-radius: 24px; background: var(--lk-bg); border: 1px solid var(--lk-line); }
+.kit-card .kit-head { margin-bottom: var(--lk-space-5); }
+.kit-media { aspect-ratio: 4 / 3; border-radius: var(--lk-radius); }
+@media (max-width: 900px) { .kit-pair, .kit-pair--wide { grid-template-columns: 1fr; } }
+
+/* Starter extras ------------------------------------------------------- */
+.estate-compare, .hotel-lens { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: var(--lk-space-7); align-items: center; }
+.estate-compare .lk-compare, .hotel-lens__media { aspect-ratio: 4 / 3; border-radius: var(--lk-radius-sm); }
+.hotel-lens .lk-head__intro { margin-top: var(--lk-space-4); }
+@media (max-width: 900px) { .estate-compare, .hotel-lens { grid-template-columns: 1fr; gap: var(--lk-space-5); } }
+.hub-hero__glow canvas { opacity: 0.6; }

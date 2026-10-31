@@ -57,6 +57,13 @@ export const estate = {
     { id: "p3", title: "Kapila Court", meta: "Kapila Theertham · 36 homes", category: "Residential", art: { scene: "arch", seed: 5, slot: "project-kapila-interior" } },
     { id: "p4", title: "Renigunta Works", meta: "Renigunta · Grade-A office", tag: "Coming 2027", category: "Commercial", art: { scene: "grid", seed: 3, slot: "project-office-plan" } },
   ] satisfies Listing[],
+  buying: [
+    { meta: "Day 1", title: "Visit", body: "See the site and the sample flat. We pick you up." },
+    { meta: "Day 2", title: "Reserve", body: "Block your home with a refundable token." },
+    { meta: "Week 2", title: "Agreement", body: "Sale agreement, registered, with the RERA schedule attached." },
+    { meta: "Week 3", title: "Home loan", body: "Pre-approved with four banks; we handle the paperwork." },
+    { meta: "2028", title: "Keys", body: "Snag walk, handover and a 5-year structural warranty." },
+  ],
   milestones: [
     { when: "2025", title: "Land and approvals", body: "Title cleared, layout approved, RERA registered.", art: { scene: "grid" as const } },
     { when: "2026", title: "Foundation and podium", body: "Raft foundation poured; landscape podium in progress.", art: { scene: "dunes" as const } },

@@ -22,6 +22,11 @@ export const story = {
     { kicker: "03 · Dry", title: "Sun on the patio", body: "Cherries dry on raised beds for three weeks, turned by hand every hour.", media: { scene: "grid" as const, seed: 33, slot: "story-drying" } },
     { kicker: "04 · Roast", title: "Small batches", body: "Twelve kilos at a time, roasted the morning we ship it.", media: { scene: "pedestal" as const, seed: 34, slot: "story-roast" } },
   ],
+  dawn: [
+    { time: "5:40 am", title: "Mist on the slopes" },
+    { time: "6:05 am", title: "The sun clears the ridge" },
+    { time: "6:30 am", title: "Picking starts" },
+  ],
   sequence: { title: "From cherry to cup", body: "Scroll the roast. Green beans turn gold, then cinnamon, then the deep brown of a city roast." },
   milestones: [
     { when: "1952", title: "First planting", body: "Twelve acres of arabica under existing forest canopy." },

@@ -1,6 +1,6 @@
 "use client";
 
-import { ImageSequence, PinnedChapters } from "@lakshya/motion";
+import { ImageSequence, PinnedChapters, Preloader, ScrollVideo } from "@lakshya/motion";
 import { Art, CtaBand, Gallery, HeroMega, Quote, SiteFooter, SiteHeader, Statement, Timeline } from "@lakshya/ui";
 import { ThemePage } from "@/components/ThemePage";
 import { StudioCredit } from "@/components/StudioCredit";
@@ -67,6 +67,7 @@ function drawRoast(ctx: CanvasRenderingContext2D, t: number, w: number, h: numbe
 export function StorySite() {
   return (
     <ThemePage theme="story">
+      <Preloader tagline="Seventy years of shade-grown coffee" brand={<span className="lk-display lk-display--2xl">{story.brand}</span>} storageKey="kaapi-intro" />
       <SiteHeader brand={story.brand} links={story.nav} cta={{ label: "Order beans", href: "#estate" }} />
       <HeroMega
         kicker={story.hero.kicker}
@@ -80,6 +81,16 @@ export function StorySite() {
         {story.statement}
       </Statement>
       <PinnedChapters chapters={story.chapters.map((c) => ({ ...c, media: <Art {...c.media} /> }))} />
+      <ScrollVideo
+        src="/media/estate-dawn.mp4"
+        poster="/media/estate-dawn-poster.jpg"
+        captions={story.dawn.map((d) => (
+          <>
+            <p className="lk-kicker">{d.time}</p>
+            <h3 className="lk-display lk-display--2xl">{d.title}</h3>
+          </>
+        ))}
+      />
       <div id="roast">
         <ImageSequence
           draw={drawRoast}

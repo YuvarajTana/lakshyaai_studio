@@ -1,6 +1,6 @@
 import { themes, type ThemeName } from "@lakshya/tokens";
 import { Art, Container, FeatureGrid, Kicker, LinkButton, SiteFooter, SiteHeader, Ticker, type ArtScene } from "@lakshya/ui";
-import { Reveal, SplitReveal } from "@lakshya/motion";
+import { Reveal, ShaderGradient, SplitReveal } from "@lakshya/motion";
 
 const STUDIO = "https://studio.lakshyaai.com";
 
@@ -42,13 +42,16 @@ export default function Hub() {
           { label: "Starters", href: "#starters" },
           { label: "Themes", href: "#themes" },
           { label: "Kit", href: "#kit" },
+          { label: "Components", href: "/kit" },
           { label: "Engagements", href: "#pricing" },
         ]}
         cta={{ label: "Start a project", href: `${STUDIO}/#contact` }}
       />
 
       <section className="hub-hero" id="top">
-        <div className="hub-hero__glow" aria-hidden="true" />
+        <div className="hub-hero__glow" aria-hidden="true">
+          <ShaderGradient speed={0.7} grain={0.015} scale={0.7} intensity={0.45} />
+        </div>
         <Container className="hub-hero__inner">
           <Reveal>
             <span className="hub-badge">
@@ -150,6 +153,11 @@ export default function Hub() {
       </section>
 
       <FeatureGrid id="kit" kicker="03 · What's in the kit" title="The building blocks" features={blocks} />
+      <Container>
+        <LinkButton href="/kit" variant="ghost" arrow>
+          See every component live
+        </LinkButton>
+      </Container>
 
       <section className="lk-section" id="pricing">
         <Container>
