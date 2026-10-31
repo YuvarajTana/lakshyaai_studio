@@ -1,37 +1,67 @@
-# Lakshya Tech Park — a 3D office building website
+# LakshyaAI Studio — website foundation kit
 
-Walk into a five-floor office building, tell the concierge who you're visiting, and the guide takes you to their floor. One HTML file, Three.js, no build step.
+The groundwork behind every LakshyaAI Studio site: design tokens, scroll motion, 3D, section blocks and four starter sites (storytelling, real estate, hotels, e-commerce). The code is free; LakshyaAI Studio charges to host it and connect it (bookings, payments, CMS, forms). Sold and marketed through [studio.lakshyaai.com](https://studio.lakshyaai.com) and [@studio.lakshyaai](https://instagram.com/studio.lakshyaai).
 
-- **Live demo:** `https://<your-github-username>.github.io/lakshya-tech-park/`
-- **Get the code + prompt page (what the Instagram DM links to):** `https://<your-github-username>.github.io/lakshya-tech-park/get/`
-- **The prompt pack:** [PROMPT.md](PROMPT.md)
-
-## Run it locally
-
-Any static server works. The character files are loaded with `fetch`, so opening `index.html` straight from the file system will not load the people.
-
-```bash
-python3 -m http.server 8080
-# then open http://localhost:8080
+```
+apps/web            Next.js app: hub (/), component gallery (/kit), four starters (/story /estate /hotel /shop)
+packages/tokens     Colours, type, spacing, easing; 5 themes switched by data-theme
+packages/motion     Lenis + GSAP: smooth scroll, reveals, pinned scenes, image sequence, cursor
+packages/three      React Three Fiber: one canvas, scroll camera, hotspots, procedural models
+packages/ui         Section blocks: headers, heroes, listings, specs, units, booking, cart, footer
+docs/               KNOWLEDGE_BASE.md, reference board (Mobbin + Scrolltide), art-slot list
+CLAUDE.md           Context and rules for AI coding agents (AGENTS.md points to it)
+demos/office        The earlier Lakshya Tech Park 3D office demo, unchanged
 ```
 
-## Files
+## Run it
 
-| File | What it is |
+```bash
+pnpm install
+pnpm dev            # http://localhost:3000
+pnpm build          # production build + typecheck
+pnpm export         # fully static site in apps/web/out — the free-tier deliverable
+```
+
+Node 20+ and pnpm 10.
+
+## How the pieces fit
+
+**Tokens.** Every block reads CSS variables (`--lk-bg`, `--lk-ink`, `--lk-accent`, `--lk-font-display` …). Put `data-theme="studio" | "story" | "estate" | "hotel" | "commerce"` on a wrapper and the whole subtree re-skins. **Studio** is the Lakshya AI brand taken from studio.lakshyaai.com (mint `#f4fbf7`, emerald `#0e9f6e`, Bricolage Grotesque + Geist + Geist Mono); it follows the OS into dark mode, or force it with `data-mode="light" | "dark"`. **Story** is the dark navy editorial look used by the storytelling starter. Add a client brand by adding one more `[data-theme="client"]` block in `packages/tokens/src/styles.css`.
+
+**Motion.** Wrap the app in `<SmoothScroll>` once. Lenis runs from GSAP's ticker so ScrollTrigger never drifts, and everything falls back to native scroll and no animation when the visitor prefers reduced motion. Everything pinned is built on one primitive, `<Pinned>` (CSS sticky + scroll progress), which is sturdier on phones than pin-spacing:
+
+| Component | Use it for |
 | --- | --- |
-| `index.html` | The whole site: scene, textures, navigation, UI |
-| `anims.b64.txt`, `man.b64.txt`, `woman.b64.txt` | Base64 GLB files: a Mixamo animation set and two rigged characters |
-| `get/index.html` | The "follow, then get the code" landing page used in the Instagram DM |
-| `PROMPT.md` | The prompts that produce this site in Claude |
+| `Reveal`, `SplitReveal`, `ScrubText` | Fade-ups, masked headline reveals, words lighting up as you scroll |
+| `Parallax`, `Counter`, `Magnetic`, `Marquee`, `Cursor` | Micro-interactions |
+| `PinnedChapters` | A story told in steps: media and copy crossfade per chapter |
+| `HorizontalScroll`, `StackCards` | Galleries and stacked cards |
+| `ImageSequence` | Scroll-scrubbed frames on a canvas: pass image URLs or a `draw` function |
+| `useScrollProgress`, `useActiveStep` | Build your own scroll-driven thing without re-rendering React |
+| `ScrollVideo` | Scroll drives a video's playhead, captions fade through it |
+| `Turntable` | Drag to spin a frame sequence (360 product/building), or pointer-follow |
+| `ZoomReveal`, `DepthLayers` | Pill-to-full-bleed reveal; layered plates pushed through in depth |
+| `RevealLens`, `BeforeAfter` | Pointer lens showing a second image; drag-to-compare slider |
+| `ShaderGradient`, `Preloader` | Theme-coloured living gradient (one WebGL shader); session-once intro |
 
-## Publish on GitHub Pages (once)
+**3D.** `<SceneCanvas>` is the only canvas you need: capped DPR, adaptive resolution, offline studio lighting (no HDR download), stops rendering when off-screen, and a fallback when WebGL is missing. `<ScrollRig>` flies the camera through keyframes as you scroll, arcing around the subject. `<Hotspots>` pins labels to points on a model. `Tower`, `Villa`, `ProductSpeaker` and `Pebble` are procedural placeholders sized to real proportions; `<ModelSlot src="/model.glb">` swaps in a client's GLB without re-framing.
 
-```bash
-git init && git add . && git commit -m "Lakshya Tech Park 3D office website"
-gh repo create lakshya-tech-park --public --source=. --push
-# or: create the repo on github.com, then  git remote add origin <url> && git push -u origin main
-```
+**Blocks.** `@lakshya/ui` holds the sections, all driven by props, including `ScrollIndex`, `ExpandCards`, `HoverList` and `StepPath`. Every block is demoed live at `/kit`. A starter is a page of blocks plus a content file (`apps/web/content/*.ts`). To make a client site, copy a starter, edit its content file, set its theme, and replace art slots with photos.
 
-Then on GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: main / (root) → Save.** The site is live at `https://<username>.github.io/lakshya-tech-park/` in a minute or two. Replace `REPLACE_WITH_YOUR_GITHUB` in `get/index.html` with your username before pushing.
+**Art slots.** `<Art scene="arch" slot="room-courtyard" />` draws a themed illustration so a site looks finished before photography exists. Pass `src` and the photo or AI render takes over. See [docs/assets.md](docs/assets.md) for every slot.
 
-All companies, people and the building are fictional. Made by LakshyaAI Studio, Tirupati & Bengaluru.
+## Free vs paid
+
+| Free (the code) | Hosted (paid) |
+| --- | --- |
+| `pnpm export` → static folder, host anywhere | Domain, hosting, SSL, monitoring |
+| Booking bar, cart and forms work as UI | Wired to a booking engine, Razorpay/Shopify, CRM, email |
+| Content in a TypeScript file | CMS so the owner edits copy and photos |
+
+The hooks for the paid tier are already there: `BookingBar onSearch`, `CartDrawer onCheckout`, `ModelSlot src`, `Art src`.
+
+## References
+
+Patterns were studied from the Mobbin collections and the Scrolltide library listed in [docs/references.md](docs/references.md). They are references, not sources: every component here is original code.
+
+All names, properties, prices and people in the demos are fictional.

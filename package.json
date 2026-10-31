@@ -1,0 +1,16 @@
+{
+  "name": "lakshyaai-studio",
+  "private": true,
+  "description": "LakshyaAI Studio foundation kit: tokens, motion, 3D and section blocks for scroll-storytelling, real estate, hotel and e-commerce websites.",
+  "packageManager": "pnpm@10.28.0",
+  "scripts": {
+    "dev": "turbo run dev --filter=@lakshya/web",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "export": "pnpm --filter @lakshya/web export"
+  },
+  "devDependencies": {
+    "turbo": "^2.11.10",
+    "typescript": "^5.9.3"
+  }
+}
